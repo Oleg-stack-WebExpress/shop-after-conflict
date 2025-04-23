@@ -1,0 +1,44 @@
+
+shop
+
+CREATE TABLE IF NOT EXISTS users (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+   	name VARCHAR(500),
+    	email VARCHAR(500),
+	password VARCHAR(500),
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP   //Дата время публикации
+)
+
+
+1 - m
+
+CREATE TABLE IF NOT EXISTS categories (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    	name VARCHAR(500),
+    	description VARCHAR(500),
+	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+
+INSERT INTO categories (name, description) VALUES ('Запчасти', 'Детали б/у от автомобилей');
+INSERT INTO categories (name, description) VALUES ('Цветмет', 'Кузова, арматура, капоты');
+INSERT INTO categories (name, description) VALUES ('Транспорт б/у', 'Детские парковые авто, картинги, мотоблоки');
+
+
+CREATE TABLE IF NOT EXISTS products (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    	name VARCHAR(500),
+    	description VARCHAR(250),
+    	price VARCHAR(250),
+	quantity VARCHAR(250),
+    	category_id INT,
+    	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+	
+	FOREIGN KEY (category_id) REFERENCES categories(id)
+)
+
+
+INSERT INTO products (name, category_id, price, description, quantity) VALUES ('Колесо от белаза', '1', '20 000', 'Почти новое', '2');
+INSERT INTO products (name, category_id, price, description, quantity) VALUES ('Капот от феррари', '2', '100 000', 'Выпрямлен после вмятины', '4');
+INSERT INTO products (name, category_id, price, description, quantity) VALUES ('Гольфкар', '3', '50 000', 'На нем проведено 22 детские игры в гольф', '5');
+
+SELECT products.*, categories.name as category_name FROM products, categories WHERE products.category_id = categories.id;
