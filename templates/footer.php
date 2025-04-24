@@ -1,7 +1,7 @@
 </div>
 <footer class="bg-info text-black mt-4 py-4">
     <div class="container text-center">
-         О магазине 2026
+    О магазине 2026
     </div>
 </footer>
 

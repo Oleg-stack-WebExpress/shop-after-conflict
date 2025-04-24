@@ -40,7 +40,7 @@ function getProduct($id)
     return $result->fetch_assoc();
 }
 
-function addProduct($name, $category_id, $price, $description, $quantity)
+function addProduct($name, $price, $description, $category_id, $quantity)
 {
     global $db;
     $query = "INSERT INTO products (name, category_id, price, description, quantity) VALUES ('$name', $category_id, $price, '$description', $quantity)";

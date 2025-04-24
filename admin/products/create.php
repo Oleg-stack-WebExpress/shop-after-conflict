@@ -22,6 +22,12 @@ if (array_key_exists('name', $_POST) && array_key_exists('category_id', $_POST))
     $category_id = isset($_POST['category_id']) ? htmlspecialchars($_POST['category_id']) : null;
     $quantity = isset($_POST['quantity']) ? htmlspecialchars($_POST['quantity']) : null;
 
+    echo $name . '<br>';
+    echo $price . '<br>';
+    echo $description . '<br>';
+    echo $category_id . '<br>';
+    echo $quantity . '<br>';
+
     if (addProduct($name, $price, $description, $category_id, $quantity)) {
       redirect('/admin/products');
     } else {
